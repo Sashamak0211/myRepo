@@ -1,134 +1,91 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
-const newData = new Date()
-
-const viteLogo = React.createElement(
-    'a', {
-        href:"https://vite.dev",
-        target: "_blank",
-
-    },
-    React.createElement('img', {
-        src: {viteLogo},
-        className: "logo",
-        alt: "Vite logo"
-    })
-    );
-
-const reactLogo = reactLogo.createElement('a', {
-        href: "https://react.dev",
-        target: "_blank"
-    },
-
-    React.createElement('img', {
-        src: {reactLogo},
-        className: "logo react",
-        alt: "React logo"
-    }));
-    
-    const contanierLogo = React.createElement("div", null, viteLogo, reactLogo);
-    
-    const headingText = "Vite + React" ;
-    
-    
-    const createh = React.createElement('h1' ,
-        headingText
-    );
-
-    const buttonProps = {onClick: () => setCount((count) => count +1)};
-
-    const buttonText = "count is {count}"
-
-    const creaeteButton = React.createElement(
-    "button", 
-    buttonProps,
-    buttonText);
-
-    const createCode = React.createElement(
-    "code",
-    src/App.jsx
-    );
-    const createCodeP = React.createElement(
-        "p",
-        "Edit",
-        createCode,
-        "and save to test HMR"
-    );
-
-
-    const contanierButton = React.createElemen("div",   
-        {className: "card"},
-        creaeteButton,
-        createCodeP
-     );
-    
-     const createTextP = "Click on the Vite and React logos to learn more"
-     
-     const createClickP = React.createElement(
-        "p",
-        createTextP
-     );
-
-     const textYearP = "`${newData.getFullYear()}`";
-     const createYearP = React.createElement(
-        "p",
-        textYearP
-     );
-
-     const contanierYear = React.createElement(
-        "div",
-        {className: "nowData"},
-        createYearP,
-        
-     );
-
-     
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const newData = new Date();
 
-  return (
-  //   <>
-  //     <div>
-  //       {/* imperativniy */}
-  //       <a href="https://vite.dev" target="_blank">
-  //         <img src={viteLogo} className="logo" alt="Vite logo" />
-  //       </a>
-  //       <a href="https://react.dev" target="_blank">
-  //         <img src={reactLogo} className="logo react" alt="React logo" />
-  //       </a>
-  //     </div>
-  //     <h1>Vite + React</h1>
-  //     <div className="card">
-  //       {/* декларативный */}
-  //       <button onClick={() => setCount((count) => count + 1)}> 
-  //         count is {count}
-  //       </button>
-  //       {/* imper */}
-  //       <p>
-  //         Edit <code>src/App.jsx</code> and save to test HMR
-  //       </p>
-  //     </div>
-  //     <p className="read-the-docs">
-  //       Click on the Vite and React logos to learn more
-  //     </p>
-  //     <div className="nowData">
-  //       {/* забыл добавить комиты */}
-  //       <p> {`${newData.getFullYear()}`} </p>
-  //     </div>
-  //   </>
-  // 
-    contanierLogo,
-    createh,
-    contanierButton,
-    createClickP,
-    contanierYear
+  const viteElement = React.createElement(
+    'a', 
+    {
+      href: "https://vite.dev",
+      target: "_blank"
+    },
+    React.createElement('img', {
+      src: viteLogo,
+      className: "logo",
+      alt: "Vite logo"
+    })
+  );
 
+  const reactElement = React.createElement(
+    'a', 
+    {
+      href: "https://react.dev",
+      target: "_blank"
+    },
+    React.createElement('img', {
+      src: reactLogo,
+      className: "logo react",
+      alt: "React logo"
+    })
+  );
 
-)
+  const containerLogo = React.createElement("div", null, viteElement, reactElement);
+  const heading = React.createElement('h1', null, "Vite + React");
+  
+  const button = React.createElement(
+    "button", 
+    {
+      onClick: () => setCount(count + 1)
+    },
+    `count is ${count}`
+  );
 
+  const codeParagraph = React.createElement(
+    "p",
+    null,
+    "Edit ",
+    React.createElement("code", null, "src/App.jsx"),
+    " and save to test HMR"
+  );
+
+  const containerButton = React.createElement(
+    "div",
+    {className: "card"},
+    button,
+    codeParagraph
+  );
+
+  const infoParagraph = React.createElement(
+    "p",
+    null,
+    "Click on the Vite and React logos to learn more"
+  );
+
+  const yearParagraph = React.createElement(
+    "p",
+    null,
+    `${newData.getFullYear()}`
+  );
+
+  const containerYear = React.createElement(
+    "div",
+    {className: "nowData"},
+    yearParagraph
+  );
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    containerLogo,
+    heading,
+    containerButton,
+    infoParagraph,
+    containerYear
+  );
 }
 
-export default App
+export default App;
