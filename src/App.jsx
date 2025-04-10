@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
@@ -77,14 +78,15 @@ function App() {
     yearParagraph
   );
 
-  return React.createElement(
-    React.Fragment,
-    null,
-    containerLogo,
-    heading,
-    containerButton,
-    infoParagraph,
-    containerYear
+  return (
+   <>
+    
+    {containerLogo}
+    {heading}
+    {containerButton}
+    {infoParagraph}
+    {containerYear}
+    </>
   );
 }
 
