@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
+import clickSound from './assets/bip.mp3'
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
   const newData = new Date();
+  const audioRef = useRef(null);
+
+  const clickButton = () => {
+    setCount(count +1);
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  }
 
   const viteElement = React.createElement(
     'a', 
@@ -40,7 +50,7 @@ function App() {
   const button = React.createElement(
     "button", 
     {
-      onClick: () => setCount(count + 1)
+      onClick: clickButton
     },
     `count is ${count}`
   );
@@ -77,6 +87,12 @@ function App() {
     {className: "nowData"},
     yearParagraph
   );
+  const createAudio = React.createElement('audio', {
+    ref: audioRef,
+    src: clickSound,
+    preload: "auto",
+    hidden: true
+  });
 
   return (
    <>
@@ -86,6 +102,7 @@ function App() {
     {containerButton}
     {infoParagraph}
     {containerYear}
+    {createAudio}
     </>
   );
 }
